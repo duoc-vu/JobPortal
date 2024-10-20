@@ -6,6 +6,7 @@ namespace JobPortal.Controllers
 {
     public class HomeController : Controller
     {
+        JobPortalDbContext db = new JobPortalDbContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,7 +16,8 @@ namespace JobPortal.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var lstJob = db.TblJobs.ToList();
+            return View(lstJob);
         }
 
         public IActionResult Privacy()

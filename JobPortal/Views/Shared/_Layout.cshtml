@@ -1,78 +1,90 @@
-﻿<!DOCTYPE html>
+﻿@*@model IEnumerable<YourProject.Models.Job>*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - JobPortal</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/JobPortal.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+
+    <!-- Include Google Fonts and Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="~/css//Layout_.css" rel="stylesheet" />
+    
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="~/images/avt.jpg" alt="Logo" />
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="@Url.Action("Index", "Jobs")">Việc làm</a></li>
-                    <li><a href="@Url.Action("Index", "CV")">Hồ sơ & CV</a></li>
-                    <li><a href="#">Công cụ</a></li>
-                    <li><a href="#">Cẩm nang nghề nghiệp</a></li>
-                    <li><a href="#">TopCV Pro</a></li>
-                </ul>
-            </nav>
-            <div class="user-options">
-                <a href="#" class="post-job">Đăng tuyển ngay</a>
-                <div class="icons">
-                    <span class="notification-icon">🔔</span>
-                    <span class="message-icon">💬</span>
-                    <img src="~/images/avatar.png" alt="User Avatar" class="user-avatar">
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main content -->
-    <main role="main" class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-item">
+            <div class="header-logo"><a href="#">Job Portal</a></div>
+
+            <nav class="header-nav">
+                <a href="#">Home</a>
+                <a href="#">Jobs</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+
+@*        <!-- Search Bar -->
+        <div class="header-search">
+            <input type="text" placeholder="Search jobs, companies...">
+            <button><i class="bi bi-search"></i></button>
+        </div>*@
+
+
+
+
+
+        <!-- Sign In / Sign Up Links -->
+        <div class="auth-links">
+            <a href="#" class="sign-link">Sign In</a>
+            <span class="divider">/</span>
+            <a href="#" class="sign-link">Sign Up</a>
+        </div>
+
+
+@*        <div class="header-avatar">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span class="header-avatar-name">John Doe</span>
+        </div>*@
+
+
+    </header>
+    <!-- Search Bar Section (Below Header) -->
+    <div class="search-section">
+        <div class="header-search">
+            <input type="text" placeholder="Search jobs, companies...">
+            <button><i class="bi bi-search"></i></button>
+        </div>
+    </div>
+    <!-- Job Listings -->
+    <div class="job-listing-container">
+        <div class="header">
+            <h1>Job Opportunities</h1>
+        </div>
+
         @RenderBody()
-    </main>
+    </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <img src="~/images/avt.jpg" alt="Logo">
-                <p>Tiếp lợi thế - Nổi thành công</p>
-                <p>Google for Startups Accelerator 2020</p>
-            </div>
-            <div class="footer-section">
-                <h3>Khám phá</h3>
-                <ul>
-                    <li><a href="#">Ứng dụng di động</a></li>
-                    <li><a href="#">Tính lương Gross - Net</a></li>
-                    <li><a href="#">Lập kế hoạch tiết kiệm</a></li>
-                </ul>
-            </div>
-            <div class="footer-section"> 
-                <h3>Công ty</h3>
-                <ul>
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Liên hệ</h3>
-                <p>Hotline: (024) 6680 5588</p>
-                <p>Email: hotro@topcv.vn</p>
-            </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Support</a>
         </div>
+        <div class="social-icons">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-linkedin"></i>
+        </div>
+        <p>&copy; 2024 JobPortal. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    @RenderSection("Scripts", required: false)
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,8 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<TblJob>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Job Cards -->
+@foreach (var job in Model)
+{
+                <div class="job-card">
+                    <div class="job-info">
+                        <h2 class="job-title">@job.SJobName</h2>
+                        <p class="company-name">@job.IEmployerId</p>
+                        <p class="job-location"><i class="bi bi-geo-alt"></i> @job.FSalary</p>
+                        <p class="job-description">
+                @job.SDetail
+                        </p>
+                    </div>
+                    <div class="job-action">
+                        <a href="@Url.Action("JobDetails", "Jobs", new { id = job.IJobId })" class="btn job-btn">View Details</a>
+                    </div>
+                </div>
+}

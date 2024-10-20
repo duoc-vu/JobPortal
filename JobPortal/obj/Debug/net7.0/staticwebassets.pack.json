@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\JobPortal.bundle.scp.css"
     },
     {
+      "Id": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\wwwroot\\css\\Layout_.css",
+      "PackagePath": "staticwebassets\\css\\Layout_.css"
+    },
+    {
       "Id": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
