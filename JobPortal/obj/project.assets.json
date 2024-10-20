@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Web MVC\\JobPortal\\JobPortal\\JobPortal.csproj",
+      "projectUniqueName": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\JobPortal.csproj",
       "projectName": "JobPortal",
-      "projectPath": "E:\\Web MVC\\JobPortal\\JobPortal\\JobPortal.csproj",
+      "projectPath": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\JobPortal.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\Web MVC\\JobPortal\\JobPortal\\obj\\",
+      "outputPath": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P9QHlQ7n1+NOPQrLKrrPbFZxL4mkmGWsUWDPBq/YaXCbWInQBW4NKFTMPgJSxVbgsVe8ddBiJyNww+G3To6/zQ==",
+  "dgSpecHash": "hMmAGA0c9jOkem4CXpflYDMCl08gfrm4ZUe13xuF9MZ7ExEy429EdVv4r634Jn7Hcqkj3Z5ujdJyGNjfTkWg7Q==",
   "success": true,
-  "projectFilePath": "E:\\Web MVC\\JobPortal\\JobPortal\\JobPortal.csproj",
+  "projectFilePath": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\JobPortal.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
