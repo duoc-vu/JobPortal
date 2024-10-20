@@ -9,41 +9,70 @@
     <link rel="stylesheet" href="~/JobPortal.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">JobPortal</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div class="container">
+            <div class="logo">
+                <img src="~/images/avt.jpg" alt="Logo" />
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Jobs")">Việc làm</a></li>
+                    <li><a href="@Url.Action("Index", "CV")">Hồ sơ & CV</a></li>
+                    <li><a href="#">Công cụ</a></li>
+                    <li><a href="#">Cẩm nang nghề nghiệp</a></li>
+                    <li><a href="#">TopCV Pro</a></li>
+                </ul>
+            </nav>
+            <div class="user-options">
+                <a href="#" class="post-job">Đăng tuyển ngay</a>
+                <div class="icons">
+                    <span class="notification-icon">🔔</span>
+                    <span class="message-icon">💬</span>
+                    <img src="~/images/avatar.png" alt="User Avatar" class="user-avatar">
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - JobPortal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Main content -->
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="~/images/avt.jpg" alt="Logo">
+                <p>Tiếp lợi thế - Nổi thành công</p>
+                <p>Google for Startups Accelerator 2020</p>
+            </div>
+            <div class="footer-section">
+                <h3>Khám phá</h3>
+                <ul>
+                    <li><a href="#">Ứng dụng di động</a></li>
+                    <li><a href="#">Tính lương Gross - Net</a></li>
+                    <li><a href="#">Lập kế hoạch tiết kiệm</a></li>
+                </ul>
+            </div>
+            <div class="footer-section"> 
+                <h3>Công ty</h3>
+                <ul>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Hotline: (024) 6680 5588</p>
+                <p>Email: hotro@topcv.vn</p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Scripts -->
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
