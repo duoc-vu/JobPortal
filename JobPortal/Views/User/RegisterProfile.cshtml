@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Register Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model object
+
+<h1>Đăng ký hồ sơ</h1>
+
+@if (Model != null) // Nếu là ứng viên
+{
+    if (Model is JobPortal.Models.TblCandidate)
+    {
+        var candidate = Model as JobPortal.Models.TblCandidate;
+        <h4>Đăng ký hồ sơ ứng viên</h4>
+        <hr />
+        <form asp-action="RegisterProfile" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SAvt" class="control-label">Ảnh đại diện</label>
+                <input asp-for="@candidate.SAvt" class="form-control" />
+                <span asp-validation-for="@candidate.SAvt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SName" class="control-label">Tên đầy đủ</label>
+                <input asp-for="@candidate.SName" class="form-control" />
+                <span asp-validation-for="@candidate.SName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SEmail" class="control-label">Email</label>
+                <input asp-for="@candidate.SEmail" class="form-control" />
+                <span asp-validation-for="@candidate.SEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SPhone" class="control-label">Số điện thoại</label>
+                <input asp-for="@candidate.SPhone" class="form-control" />
+                <span asp-validation-for="@candidate.SPhone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.FExperience" class="control-label">Kinh nghiệm (năm)</label>
+                <input asp-for="@candidate.FExperience" class="form-control" />
+                <span asp-validation-for="@candidate.FExperience" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SIndustry" class="control-label">Ngành nghề</label>
+                <input asp-for="@candidate.SIndustry" class="form-control" />
+                <span asp-validation-for="@candidate.SIndustry" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SAddress" class="control-label">Địa chỉ</label>
+                <input asp-for="@candidate.SAddress" class="form-control" />
+                <span asp-validation-for="@candidate.SAddress" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@candidate.SDetail" class="control-label">Mô tả thêm</label>
+                <textarea asp-for="@candidate.SDetail" class="form-control"></textarea>
+                <span asp-validation-for="@candidate.SDetail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Đăng ký" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+    else if (Model is JobPortal.Models.TblEmployer)
+    {
+        var employer = Model as JobPortal.Models.TblEmployer;
+        <h4>Đăng ký hồ sơ nhà tuyển dụng</h4>
+        <hr />
+        <form asp-action="RegisterProfile" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SAvt" class="control-label">Logo công ty</label>
+                <input asp-for="@employer.SAvt" class="form-control" />
+                <span asp-validation-for="@employer.SAvt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SName" class="control-label">Tên công ty</label>
+                <input asp-for="@employer.SName" class="form-control" />
+                <span asp-validation-for="@employer.SName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SEmail" class="control-label">Email công ty</label>
+                <input asp-for="@employer.SEmail" class="form-control" />
+                <span asp-validation-for="@employer.SEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SPhone" class="control-label">Số điện thoại</label>
+                <input asp-for="@employer.SPhone" class="form-control" />
+                <span asp-validation-for="@employer.SPhone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SCompanyField" class="control-label">Lĩnh vực hoạt động</label>
+                <input asp-for="@employer.SCompanyField" class="form-control" />
+                <span asp-validation-for="@employer.SCompanyField" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.FCompanySize" class="control-label">Quy mô công ty</label>
+                <input asp-for="@employer.FCompanySize" class="form-control" />
+                <span asp-validation-for="@employer.FCompanySize" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SAddress" class="control-label">Địa chỉ công ty</label>
+                <input asp-for="@employer.SAddress" class="form-control" />
+                <span asp-validation-for="@employer.SAddress" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@employer.SDetail" class="control-label">Mô tả thêm</label>
+                <textarea asp-for="@employer.SDetail" class="form-control"></textarea>
+                <span asp-validation-for="@employer.SDetail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Đăng ký" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+}
+<div>
+    <a asp-action="Index" asp-controller="Home">Quay lại danh sách</a>
+</div>

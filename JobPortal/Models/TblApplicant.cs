@@ -5,7 +5,7 @@ namespace JobPortal.Models;
 
 public partial class TblApplicant
 {
-    public int ICandidateId { get; set; }
+    public int IUserId { get; set; }
 
     public int IJobId { get; set; }
 
@@ -15,7 +15,7 @@ public partial class TblApplicant
 
     public string? SStatus { get; set; }
 
-    public virtual TblCandidate ICandidate { get; set; } = null!;
-
     public virtual TblJob IJob { get; set; } = null!;
+
+    public virtual TblCandidate IUser { get; set; } = null!;
 }

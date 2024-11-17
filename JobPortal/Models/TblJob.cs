@@ -21,6 +21,8 @@ public partial class TblJob
 
     public int? IEmployerId { get; set; }
 
+    public string? SAddress { get; set; }
+
     public virtual TblEmployer? IEmployer { get; set; }
 
     public virtual ICollection<TblApplicant> TblApplicants { get; set; } = new List<TblApplicant>();

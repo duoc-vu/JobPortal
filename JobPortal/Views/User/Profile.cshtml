@@ -1,0 +1,87 @@
+﻿@model object
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Profile</h1>
+@if (ViewData["ProfileMessage"] != null)
+{
+    <div class="alert alert-warning">
+        @ViewData["ProfileMessage"]
+        <a href="@Url.Action("RegisterProfile", "User")" class="btn btn-primary">Đăng ký thông tin</a>
+    </div>
+     
+   
+}
+
+@if (Model != null)
+{
+    if (Model is JobPortal.Models.TblCandidate)
+    {
+        var candidate = Model as JobPortal.Models.TblCandidate;
+        <h4>Candidate Profile</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SAvt)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SAvt)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SName)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SName)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SEmail)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SEmail)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SPhone)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SPhone)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.FExperience)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.FExperience)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SIndustry)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SIndustry)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SAddress)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SAddress)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => candidate.SDetail)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => candidate.SDetail)</dd>
+        </dl>
+    }
+    else if (Model is JobPortal.Models.TblEmployer)
+    {
+        var employer = Model as JobPortal.Models.TblEmployer;
+        <h4>Employer Profile</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SAvt)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SAvt)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SName)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SName)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SEmail)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SEmail)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SPhone)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SPhone)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SCompanyField)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SCompanyField)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.FCompanySize)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.FCompanySize)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SAddress)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SAddress)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => employer.SDetail)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => employer.SDetail)</dd>
+        </dl>
+    }
+}
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model?.iCandidateID ?? Model?.iEmployerID">Edit</a> |*@
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dCO9m4gTA6p+G86vcWkiYTBnV2FaVYpW17LCV6YBtu0=",
+  "Hash": "3dDwMEDnICCB9xhqWtqJP3tRb5A2IV0MrvfGXPnjIp4=",
   "Source": "JobPortal",
   "BasePath": "_content/JobPortal",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\JobPortal.bundle.scp.css"
+    },
+    {
+      "Identity": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\wwwroot\\css\\Home.css",
+      "SourceId": "JobPortal",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\wwwroot\\",
+      "BasePath": "_content/JobPortal",
+      "RelativePath": "css/Home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Home.css"
     },
     {
       "Identity": "E:\\Web MVC\\MVC_project\\JobPortal\\JobPortal\\wwwroot\\css\\Layout_.css",

@@ -5,6 +5,14 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
+.gradient-text {
+    font-size: 48px; /* Kích thước chữ */
+    font-weight: bold; /* Độ đậm của chữ */
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Màu gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
 /* Header Styles */
 .header {
@@ -12,39 +20,40 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #2C3E50;
+    background-color: #6a11cb; /* Nền tím */
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .header-item {
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
 .header-logo {
     font-size: 24px;
     font-weight: bold;
-    margin-right:50px;
+    margin-right: 50px;
 }
 
     .header-logo a {
-        color: #18BC9C;
+        color: #fff; /* Màu chữ trắng cho logo */
         text-decoration: none;
     }
 
 .header-nav a {
-    color: #fff;
+    color: #fff; /* Màu chữ trắng cho liên kết */
     text-decoration: none;
     margin-right: 20px;
     transition: color 0.3s;
 }
 
     .header-nav a:hover {
-        color: #18BC9C;
+        color: #18BC9C; /* Màu hover xanh lục nhạt */
     }
 
-.header-avatar {
+/*.header-avatar {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -54,7 +63,99 @@ body {
         border-radius: 50%;
         width: 40px;
         height: 40px;
+    }*/
+
+/* Định dạng avatar và dropdown */
+.header-avatar {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.avatar-img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.header-avatar-name {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #fff; /* Màu chữ trắng đồng nhất với header */
+    vertical-align: middle;
+}
+
+/* Dropdown menu chỉ hiện khi hover vào avatar hoặc menu */
+.header-avatar:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #6a11cb; /* Nền dropdown theo màu chủ đạo */
+    border: 1px solid #5a0fbf;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    margin: 0;
+    min-width: 160px; /* Giảm chiều rộng */
+    z-index: 1000;
+}
+
+    /* Định dạng chung cho các mục trong dropdown */
+    .dropdown-menu li,
+    .dropdown-menu a {
+        display: block;
+        padding: 8px 15px; /* Giảm padding */
+        cursor: pointer;
+        color: #fff; /* Màu chữ trắng */
+        font-weight: 500;
+        background-color: transparent; /* Nền trong suốt */
+        text-decoration: none; /* Bỏ gạch chân */
+        transition: background-color 0.3s ease;
+        font-size: 0.9em; /* Giảm kích thước chữ */
     }
+
+        /* Hover hiệu ứng cho các mục */
+        .dropdown-menu li:hover,
+        .dropdown-menu a:hover,
+        .dropdown-item:hover {
+            background-color: #2575fc; /* Màu hover xanh chủ đạo */
+        }
+
+    /* Đường kẻ trong dropdown */
+    .dropdown-menu hr {
+        margin: 4px 0; /* Giảm khoảng cách */
+        border-color: #5a0fbf;
+        opacity: 0.5;
+    }
+
+/* Nút Log Out */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 15px; /* Giảm padding */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff; /* Màu chữ trắng */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s ease;
+}
+
+    .dropdown-item:hover {
+        background-color: #2575fc; /* Màu hover xanh chủ đạo */
+    }
+
+
+
 
 /* Sign In / Sign Up Links */
 .auth-links {
@@ -67,14 +168,14 @@ body {
 
 .sign-link {
     text-decoration: none;
-    color: #fff;
+    color: #fff; /* Màu chữ trắng */
     transition: color 0.3s ease;
     font-weight: bold;
     position: relative;
 }
 
     .sign-link:hover {
-        color: #18BC9C;
+        color: #18BC9C; /* Màu hover xanh lục nhạt */
     }
 
 .divider {
@@ -82,108 +183,171 @@ body {
     font-size: 18px;
 }
 
-/* Search Section Styles */
-.search-section {
+.header-main {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.header-career {
+    display: flex;
+    align-items: center;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Upload Job Button Section */
+.upload-job-section {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.upload-job-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient từ Tím sang Xanh đậm */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+    .upload-job-btn:hover {
+        color: #18BC9C;
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #5a0fbf, #1d5ed8); /* Gradient đậm hơn khi hover */
+    }
+
+/* Search Section */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px;
 }
 
 .header-search {
-    max-width: 600px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 5px 15px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #f0f3f7;
+    border-radius: 50px;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-    .header-search input {
-        width: 100%;
+    .header-search input[type="text"] {
+        flex: 1;
         border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
         outline: none;
-        padding: 10px;
-        border-radius: 25px;
+        font-size: 1em;
+        color: #333;
+        background-color: transparent;
     }
 
     .header-search button {
-        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #2575fc; /* Màu xanh đậm */
+        color: white;
         border: none;
+        border-radius: 50%;
         cursor: pointer;
-        color: #2C3E50;
-        font-size: 18px;
+        transition: background-color 0.3s ease;
     }
 
         .header-search button:hover {
-            color: #18BC9C;
+            background-color: #1a5fbd; /* Màu hover xanh đậm */
         }
 
-/* Job Card Styles */
-.job-listing-container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
+        .header-search button::before {
+            content: "\1F50D"; /* Unicode for magnifying glass */
+            font-size: 18px;
+            color: #D4AF37; /* Bronze color */
+        }
+
+/* Job Opportunities Title */
+.header h1 {
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+/* Job Card */
 .job-card {
+    width: 70%;
+    max-width: 800px;
+    margin: 20px auto;
     display: flex;
-    flex-direction: column;
-    background-color: #fff;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
     .job-card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
 
+.job-info {
+    flex: 3;
+}
+
 .job-title {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 1.6em;
+    margin: 0;
     color: #333;
+    font-weight: bold;
 }
 
-.company-name {
-    font-size: 18px;
-    color: #777;
-    margin: 5px 0;
-}
-
-.job-location {
-    color: #18BC9C;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.job-description {
+.company-name, .job-location, .job-description {
+    margin: 8px 0;
     color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
 }
 
-.job-btn {
-    background-color: #18BC9C;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: 600;
+    .job-location i {
+        margin-right: 5px;
+        color: #2575fc; /* Màu xanh đậm */
+    }
+
+.job-action {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.btn.job-btn {
+    padding: 10px 20px;
+    background-color: #2575fc; /* Màu xanh đậm */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
     transition: background-color 0.3s ease;
 }
 
-    .job-btn:hover {
-        background-color: #2C3E50;
+    .btn.job-btn:hover {
+        background-color: #1ABC9C; /* Màu hover xanh đậm */
     }
 
 /* Footer Styles */
 .footer {
-    background-color: #2C3E50;
+    background-color: #6a11cb; /* Nền tím */
     color: #fff;
     padding: 40px 0;
     margin-top: 50px;
@@ -191,13 +355,13 @@ body {
 }
 
     .footer a {
-        color: #18BC9C;
+        color: #fff; /* Màu xanh lục nhạt */
         margin: 0 10px;
         text-decoration: none;
     }
 
         .footer a:hover {
-            color: #1ABC9C;
+            color: #1ABC9C; /* Màu hover xanh lục nhạt */
         }
 
     .footer .footer-links {
@@ -206,7 +370,7 @@ body {
 
     .footer .social-icons i {
         font-size: 24px;
-        margin: 0 10px;
+        margin: 0 10px; 
         color: #18BC9C;
         cursor: pointer;
         transition: color 0.3s ease;
@@ -239,3 +403,91 @@ body {
         padding: 12px 40px;
     }
 }
+
+
+/*job detail*/
+/* Style for Job Detail Page */
+.job-detail {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+    .job-detail h2 {
+        font-size: 2.5em;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+.job-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.job-avatar {
+    width: 100px; /* Kích thước ảnh đại diện */
+    height: 100px;
+    border-radius: 50%; /* Hình tròn */
+    margin-right: 20px;
+}
+
+.job-info {
+    flex-grow: 1;
+}
+
+.job-salary, .job-status, .job-time {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.job-details h4 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #2575fc; /* Màu xanh đậm */
+}
+
+.job-details p {
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.job-detail a {
+    color: #6a11cb; /* Màu nút */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    .job-detail a:hover {
+        color: #1ABC9C; /* Màu hover xanh đậm */
+    }
+
+/* Style for Edit and Back to List Links */
+.action-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+    .action-links a {
+        padding: 10px 20px;
+        background-color: #6a11cb;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .action-links a:hover {
+            background-color: #5a0fbf;
+        }

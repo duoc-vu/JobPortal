@@ -1,5 +1,8 @@
 ﻿@*@model IEnumerable<YourProject.Models.Job>*@
-
+@{
+    var roleId = ViewContext.HttpContext.Session.GetInt32("IRoleId");
+    var userId = ViewContext.HttpContext.Session.GetInt32("IUserId");
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <!-- Include Google Fonts and Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link href="~/css//Layout_.css" rel="stylesheet" />
+    <link href="~/css/Layout_.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -18,7 +21,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-item">
-            <div class="header-logo"><a href="#">Job Portal</a></div>
+            <div class="header-logo "><a href="#">Job Portal</a></div>
 
             <nav class="header-nav">
                 <a href="#">Home</a>
@@ -33,41 +36,40 @@
             <input type="text" placeholder="Search jobs, companies...">
             <button><i class="bi bi-search"></i></button>
         </div>*@
+        @if (userId == null)
+        {
+            <!-- Sign In / Sign Up Links -->
+            <div class="auth-links">
+                <a href="#" class="sign-link">Sign In</a>
+                <span class="divider">/</span>
+                <a href="#" class="sign-link">Sign Up</a>
+            </div>
+        }
+        else
+        {
+            <!-- Dropdown Avatar Menu -->
+            <div class="header-avatar">
+                <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-img">
+                <span class="header-avatar-name">John Doe</span>
 
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu">
+                    <li><a asp-action="Profile" asp-controller="User">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <hr>
+                    <li>
+                        <form method="post" action="/User/Logout">
+                            <button type="submit" class="dropdown-item">Log Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
 
-
-
-
-        <!-- Sign In / Sign Up Links -->
-        <div class="auth-links">
-            <a href="#" class="sign-link">Sign In</a>
-            <span class="divider">/</span>
-            <a href="#" class="sign-link">Sign Up</a>
-        </div>
-
-
-@*        <div class="header-avatar">
-            <img src="https://via.placeholder.com/40" alt="User Avatar">
-            <span class="header-avatar-name">John Doe</span>
-        </div>*@
-
-
+        }
     </header>
     <!-- Search Bar Section (Below Header) -->
-    <div class="search-section">
-        <div class="header-search">
-            <input type="text" placeholder="Search jobs, companies...">
-            <button><i class="bi bi-search"></i></button>
-        </div>
-    </div>
-    <!-- Job Listings -->
-    <div class="job-listing-container">
-        <div class="header">
-            <h1>Job Opportunities</h1>
-        </div>
-
-        @RenderBody()
-    </div>
+ 
+    @RenderBody()
 
     <!-- Footer -->
     <footer class="footer">

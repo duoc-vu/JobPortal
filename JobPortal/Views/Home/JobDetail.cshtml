@@ -1,0 +1,40 @@
+﻿@model JobPortal.Models.TblJob
+
+@{
+    ViewData["Title"] = "Chi tiết công việc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var roleId = ViewContext.HttpContext.Session.GetInt32("IRoleId");
+    var userId = ViewContext.HttpContext.Session.GetInt32("UserName");
+}
+
+<div class="job-detail">
+    <h2>Chi tiết công việc</h2>
+
+    <div class="job-header">
+        <img src="@Model.SAvt" alt="Ảnh đại diện công việc" class="job-avatar" />
+        <div class="job-info">
+            <h3>@Model.SJobName</h3>
+            <p class="job-salary">Mức lương: @Html.DisplayFor(model => model.FSalary)</p>
+            <p class="job-status">Trạng thái: @Html.DisplayFor(model => model.SStatus)</p>
+            <p class="job-time">Ngày đăng: @Html.DisplayFor(model => model.DTime)</p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="job-details">
+        <h4>Mô tả công việc</h4>
+        <p>@Html.DisplayFor(model => model.SDetail)</p>
+
+        <h4>Thông tin nhà tuyển dụng</h4>
+        <p>ID nhà tuyển dụng: @Html.DisplayFor(model => model.IEmployerId)</p>
+        @*<p>Địa chỉ: @Html.DisplayFor(model => model.SAddress)</p>*@
+    </div>
+
+    <div class="action-links">
+        @if(roleId == 3) {
+            <a asp-controller="Home" asp-action="JobApply" asp-route-jobID="@Model.IJobId" >Ứng tuyển</a>
+        }
+        <a asp-controller="Home" asp-action="Index">Quay lại danh sách</a>
+    </div>
+</div>

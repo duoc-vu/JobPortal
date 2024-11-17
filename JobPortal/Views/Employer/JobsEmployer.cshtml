@@ -1,0 +1,85 @@
+﻿@model List<TblJob>
+
+@{
+    ViewData["Title"] = "JobsEmployer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="gradient-text">
+    <h1>Jobs Employer</h1>
+</div>
+
+
+<div class="upload-job-section">
+     <a href="@Url.Action("AddJobs", "Employer")" class="btn upload-job-btn">Đăng tải Job</a>
+</div>
+<table class="table">
+    <thead>
+@*        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SAvt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SJobName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FSalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IEmployer)
+            </th>
+            <th></th>
+        </tr>*@
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SAvt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SJobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SStatus)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SAddress)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IEmployer.IUserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IJobId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IJobId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IJobId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="action-links">
+    <a asp-controller="Home" asp-action="Index">Quay lại danh sách</a>
+</div>

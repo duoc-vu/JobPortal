@@ -1,4 +1,5 @@
 ﻿using JobPortal.Models;
+using JobPortal.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +8,25 @@ namespace JobPortal.Controllers
     public class HomeController : Controller
     {
         JobPortalDbContext db = new JobPortalDbContext();
-        private readonly ILogger<HomeController> _logger;
+        private readonly IJobRepository _jobRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+/*        private readonly ILogger<HomeController> _logger;
+*/
+        public HomeController(IJobRepository jobRepository)
         {
-            _logger = logger;
+            _jobRepository = jobRepository;
         }
 
         public IActionResult Index()
         {
-            var lstJob = db.TblJobs.ToList();
+            var lstJob = _jobRepository.GetAllJob();
             return View(lstJob);
+        }
+
+        public IActionResult JobDetail(int jobID)
+        {
+            var jobDetail = _jobRepository.GetJob(jobID);
+            return View(jobDetail);
         }
 
         public IActionResult Privacy()

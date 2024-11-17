@@ -35,7 +35,7 @@ public partial class JobPortalDbContext : DbContext
     {
         modelBuilder.Entity<TblAccount>(entity =>
         {
-            entity.HasKey(e => e.IUserId).HasName("PK__TblAccou__BA95FFD1E536B9D3");
+            entity.HasKey(e => e.IUserId).HasName("PK__TblAccou__BA95FFD10E123A7F");
 
             entity.ToTable("TblAccount");
 
@@ -50,16 +50,16 @@ public partial class JobPortalDbContext : DbContext
 
             entity.HasOne(d => d.IRole).WithMany(p => p.TblAccounts)
                 .HasForeignKey(d => d.IRoleId)
-                .HasConstraintName("FK__TblAccoun__iRole__267ABA7A");
+                .HasConstraintName("FK__TblAccoun__iRole__4F7CD00D");
         });
 
         modelBuilder.Entity<TblApplicant>(entity =>
         {
-            entity.HasKey(e => new { e.ICandidateId, e.IJobId }).HasName("PK__TblAppli__3ED7AF0DF35A2A05");
+            entity.HasKey(e => new { e.IUserId, e.IJobId }).HasName("PK__TblAppli__319ADB92B21AC341");
 
             entity.ToTable("TblApplicant");
 
-            entity.Property(e => e.ICandidateId).HasColumnName("iCandidateID");
+            entity.Property(e => e.IUserId).HasColumnName("iUserID");
             entity.Property(e => e.IJobId).HasColumnName("iJobID");
             entity.Property(e => e.SCv)
                 .HasMaxLength(255)
@@ -69,24 +69,26 @@ public partial class JobPortalDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("sStatus");
 
-            entity.HasOne(d => d.ICandidate).WithMany(p => p.TblApplicants)
-                .HasForeignKey(d => d.ICandidateId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TblApplic__iCand__300424B4");
-
             entity.HasOne(d => d.IJob).WithMany(p => p.TblApplicants)
                 .HasForeignKey(d => d.IJobId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TblApplic__iJobI__30F848ED");
+                .HasConstraintName("FK__TblApplic__iJobI__5BE2A6F2");
+
+            entity.HasOne(d => d.IUser).WithMany(p => p.TblApplicants)
+                .HasForeignKey(d => d.IUserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TblApplic__iUser__5AEE82B9");
         });
 
         modelBuilder.Entity<TblCandidate>(entity =>
         {
-            entity.HasKey(e => e.ICandidateId).HasName("PK__TblCandi__B5D88B4E0CF1CEF9");
+            entity.HasKey(e => e.IUserId).HasName("PK__TblCandi__BA95FFD1E690B58D");
 
             entity.ToTable("TblCandidate");
 
-            entity.Property(e => e.ICandidateId).HasColumnName("iCandidateID");
+            entity.Property(e => e.IUserId)
+                .ValueGeneratedNever()
+                .HasColumnName("iUserID");
             entity.Property(e => e.FExperience).HasColumnName("fExperience");
             entity.Property(e => e.SAddress)
                 .HasMaxLength(255)
@@ -107,15 +109,22 @@ public partial class JobPortalDbContext : DbContext
             entity.Property(e => e.SPhone)
                 .HasMaxLength(20)
                 .HasColumnName("sPhone");
+
+            entity.HasOne(d => d.IUser).WithOne(p => p.TblCandidate)
+                .HasForeignKey<TblCandidate>(d => d.IUserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TblCandid__iUser__5535A963");
         });
 
         modelBuilder.Entity<TblEmployer>(entity =>
         {
-            entity.HasKey(e => e.IEmployerId).HasName("PK__TblEmplo__0368BF5C513949D4");
+            entity.HasKey(e => e.IUserId).HasName("PK__TblEmplo__BA95FFD15028F36C");
 
             entity.ToTable("TblEmployer");
 
-            entity.Property(e => e.IEmployerId).HasColumnName("iEmployerID");
+            entity.Property(e => e.IUserId)
+                .ValueGeneratedNever()
+                .HasColumnName("iUserID");
             entity.Property(e => e.FCompanySize).HasColumnName("fCompanySize");
             entity.Property(e => e.SAddress)
                 .HasMaxLength(255)
@@ -136,11 +145,16 @@ public partial class JobPortalDbContext : DbContext
             entity.Property(e => e.SPhone)
                 .HasMaxLength(20)
                 .HasColumnName("sPhone");
+
+            entity.HasOne(d => d.IUser).WithOne(p => p.TblEmployer)
+                .HasForeignKey<TblEmployer>(d => d.IUserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TblEmploy__iUser__52593CB8");
         });
 
         modelBuilder.Entity<TblJob>(entity =>
         {
-            entity.HasKey(e => e.IJobId).HasName("PK__TblJob__B0F24439191D9162");
+            entity.HasKey(e => e.IJobId).HasName("PK__TblJob__B0F24439F87B2DAB");
 
             entity.ToTable("TblJob");
 
@@ -150,6 +164,9 @@ public partial class JobPortalDbContext : DbContext
                 .HasColumnName("dTime");
             entity.Property(e => e.FSalary).HasColumnName("fSalary");
             entity.Property(e => e.IEmployerId).HasColumnName("iEmployerID");
+            entity.Property(e => e.SAddress)
+                .HasMaxLength(255)
+                .HasColumnName("sAddress");
             entity.Property(e => e.SAvt)
                 .HasMaxLength(255)
                 .HasColumnName("sAvt");
@@ -163,12 +180,12 @@ public partial class JobPortalDbContext : DbContext
 
             entity.HasOne(d => d.IEmployer).WithMany(p => p.TblJobs)
                 .HasForeignKey(d => d.IEmployerId)
-                .HasConstraintName("FK__TblJob__iEmploye__2D27B809");
+                .HasConstraintName("FK__TblJob__iEmploye__5812160E");
         });
 
         modelBuilder.Entity<TblRole>(entity =>
         {
-            entity.HasKey(e => e.IRoleId).HasName("PK__TblRole__D69F8CBE2816C392");
+            entity.HasKey(e => e.IRoleId).HasName("PK__TblRole__D69F8CBE3AA0A6EB");
 
             entity.ToTable("TblRole");
 

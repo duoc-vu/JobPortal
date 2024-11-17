@@ -1,0 +1,65 @@
+﻿@model JobPortal.Models.TblAccount
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Register</h1>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+            <form asp-action="Register" asp-controller="User" method="post" class="p-4 border rounded bg-light">
+                <div class="form-group mb-3">
+                    <label asp-for="SUsername" class="form-label">Username</label>
+                    <input asp-for="SUsername" class="form-control" placeholder="Nhập tên đăng nhập" />
+                    <span asp-validation-for="SUsername" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="SPassword" class="form-label">Password</label>
+                    <input asp-for="SPassword" type="password" class="form-control" placeholder="Nhập mật khẩu" id="Password" />
+                    <span asp-validation-for="SPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input id="ConfirmPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu" id="ConfirmPassword" />
+                    <span  class="text-danger"></span>
+                    <span id="passwordError" class="text-danger"></span> <!-- Thông báo lỗi -->
+                </div>
+                <div class="form-group mb-3">
+                    <label>Bạn là:</label>
+                    <select asp-for="IRoleId" class="form-control">
+                        <option value="3">Ứng viên</option>
+                        <option value="2">Nhà tuyển dụng</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+            </form>
+            <p class="text-center mt-3">
+                Bạn đã có tài khoản? <a asp-controller="User" asp-action="Login">Đăng nhập ngay!</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Thêm đoạn script xác nhận mật khẩu -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const password = document.getElementById("Password");
+        const confirmPassword = document.getElementById("ConfirmPassword");
+        const errorMessage = document.getElementById("passwordError");
+
+        form.addEventListener("submit", function (event) {
+            if (password.value !== confirmPassword.value) {
+                event.preventDefault(); // Ngăn chặn form submit
+                errorMessage.textContent = "Mật khẩu xác nhận không khớp!";
+                confirmPassword.focus();
+            } else {
+                errorMessage.textContent = ""; // Xóa thông báo lỗi nếu khớp
+            }
+        });
+    });
+</script>

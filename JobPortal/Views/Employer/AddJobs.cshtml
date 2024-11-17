@@ -1,0 +1,84 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model JobPortal.Models.TblJob
+
+@{
+    ViewData["Title"] = "AddJobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userId = ViewContext.HttpContext.Session.GetInt32("UserId");
+}
+
+<h1>Add Jobs</h1>
+
+<h4>TblJob</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AddJobs">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- SAvt -->
+            <div class="form-group">
+                <label asp-for="SAvt" class="control-label"></label>
+                <input asp-for="SAvt" class="form-control" />
+                <span asp-validation-for="SAvt" class="text-danger"></span>
+            </div>
+
+            <!-- SJobName -->
+            <div class="form-group">
+                <label asp-for="SJobName" class="control-label"></label>
+                <input asp-for="SJobName" class="form-control" />
+                <span asp-validation-for="SJobName" class="text-danger"></span>
+            </div>
+
+            <!-- FSalary -->
+            <div class="form-group">
+                <label asp-for="FSalary" class="control-label"></label>
+                <input asp-for="FSalary" class="form-control" />
+                <span asp-validation-for="FSalary" class="text-danger"></span>
+            </div>
+
+            <!-- SDetail -->
+            <div class="form-group">
+                <label asp-for="SDetail" class="control-label"></label>
+                <input asp-for="SDetail" class="form-control" />
+                <span asp-validation-for="SDetail" class="text-danger"></span>
+            </div>
+
+            <!-- DTime -->
+            <div class="form-group">
+                <label asp-for="DTime" class="control-label"></label>
+                <input asp-for="DTime" class="form-control" />
+                <span asp-validation-for="DTime" class="text-danger"></span>
+            </div>
+
+            <!-- SStatus -->
+            <div class="form-group">
+                <label asp-for="SStatus" class="control-label"></label>
+                <input asp-for="SStatus" class="form-control" />
+                <span asp-validation-for="SStatus" class="text-danger"></span>
+            </div>
+
+            <!-- IEmployerId -->
+            <div class="form-group">
+                <!-- IEmployerId (Ẩn userId) -->
+                <input type="hidden" name="IEmployerId" value="@userId" />
+            </div>
+
+            <!-- SAddress -->
+            <div class="form-group">
+                <label asp-for="SAddress" class="control-label"></label>
+                <input asp-for="SAddress" class="form-control" />
+                <span asp-validation-for="SAddress" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

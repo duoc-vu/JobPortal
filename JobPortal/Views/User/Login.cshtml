@@ -1,0 +1,44 @@
+﻿@model JobPortal.Models.TblAccount;
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+            <!-- Thêm ValidationSummary để hiển thị thông báo lỗi chung -->
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </div>
+            }
+
+            <form asp-action="Login" method="post" class="p-4 border rounded bg-light">
+                <div class="form-group mb-3">
+                    <label asp-for="SUsername" class="form-label">Username</label>
+                    <input asp-for="SUsername" class="form-control" placeholder="Nhập tên đăng nhập" />
+                    <span asp-validation-for="SUsername" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="SPassword" class="form-label">Password</label>
+                    <input asp-for="SPassword" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span asp-validation-for="SPassword" class="text-danger"></span>
+                </div>
+
+                <!-- Thêm thuộc tính disabled nếu ViewData["IsLocked"] == true -->
+                <button type="submit" class="btn btn-primary w-100"
+                        @(ViewData["IsLocked"] != null && (bool)ViewData["IsLocked"] ? "disabled" : "")>
+                    Đăng Nhập
+                </button>
+            </form>
+            <p class="text-center mt-3">
+                Bạn chưa có tài khoản? <a asp-controller="User" asp-action="Register">Đăng ký ngay!</a>
+            </p>
+        </div>
+    </div>
+</div>

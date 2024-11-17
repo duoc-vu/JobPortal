@@ -14,4 +14,8 @@ public partial class TblAccount
     public int? IRoleId { get; set; }
 
     public virtual TblRole? IRole { get; set; }
+
+    public virtual TblCandidate? TblCandidate { get; set; }
+
+    public virtual TblEmployer? TblEmployer { get; set; }
 }
