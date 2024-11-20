@@ -1,0 +1,43 @@
+﻿@model JobPortal.Models.TblApplicant
+
+@{
+    ViewData["Title"] = "JobApplicant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>JobApplicant</h1>
+
+<h4>TblApplicant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="JobApplicant" asp-controller="Job">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- UserID (ẩn để không cho phép chỉnh sửa) -->
+            <input type="hidden" asp-for="IUserId" value="@ViewBag.IUserId" />
+
+            <!-- JobID (ẩn để không cho phép chỉnh sửa) -->
+            <input type="hidden" asp-for="IJobId" value="@ViewBag.IJobId" />
+
+            <div class="form-group">
+                <label asp-for="SIntroduction" class="control-label"></label>
+                <input asp-for="SIntroduction" class="form-control" />
+                <span asp-validation-for="SIntroduction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SCv" class="control-label"></label>
+                <input asp-for="SCv" class="form-control" />
+                <span asp-validation-for="SCv" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="SStatus" value="Nothing yet" />
+            <div class="form-group">
+                <input type="submit" value="Ứng tuyển" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

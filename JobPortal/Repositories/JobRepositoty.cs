@@ -1,4 +1,5 @@
 ﻿using JobPortal.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobPortal.Repositories
 {
@@ -10,11 +11,11 @@ namespace JobPortal.Repositories
         {
             _context = context;
         }
-        public TblJob Add(TblJob job)
+        public TblJob Add(TblJob applicant)
         {
-            _context.Add(job);
+            _context.Add(applicant);
             _context.SaveChanges();
-            return job;
+            return applicant;
         }
 
         public TblJob Delete(TblJob job)
@@ -24,7 +25,9 @@ namespace JobPortal.Repositories
 
         public List<TblJob> GetAllJob()
         {
-            return _context.TblJobs.ToList();
+            return _context.TblJobs
+                .Include(j => j.IEmployer) 
+                .ToList();
         }
 
         public TblJob GetJob(int jobID)
@@ -43,6 +46,13 @@ namespace JobPortal.Repositories
         {
             var jobs = _context.TblJobs.Where(x => x.IEmployerId == EmployerID).ToList();
             return jobs;
+        }
+
+        public TblJob GetJobI(int jobID)
+        {
+            return _context.TblJobs
+                .Include(j => j.IEmployer)
+                .FirstOrDefault(i => i.IJobId == jobID); 
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using JobPortal.Models;
 using JobPortal.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace JobPortal.Controllers
@@ -9,12 +10,14 @@ namespace JobPortal.Controllers
     {
         JobPortalDbContext db = new JobPortalDbContext();
         private readonly IJobRepository _jobRepository;
+        private readonly IApplicantRepository _applicantRepository;
 
-/*        private readonly ILogger<HomeController> _logger;
-*/
-        public HomeController(IJobRepository jobRepository)
+        /*        private readonly ILogger<HomeController> _logger;
+        */
+        public HomeController(IJobRepository jobRepository, IApplicantRepository applicantRepository)
         {
             _jobRepository = jobRepository;
+            _applicantRepository = applicantRepository;
         }
 
         public IActionResult Index()
@@ -25,7 +28,15 @@ namespace JobPortal.Controllers
 
         public IActionResult JobDetail(int jobID)
         {
-            var jobDetail = _jobRepository.GetJob(jobID);
+            var userId = HttpContext.Session.GetInt32("IUserId");
+            var isApply = true;
+            var jobCandidate = db.TblApplicants.FirstOrDefault(x => x.IUserId == userId && x.IJobId == jobID);
+            if(jobCandidate != null)
+            {
+                isApply = false;
+            }
+            ViewBag.isApply = isApply;
+            var jobDetail = _jobRepository.GetJobI(jobID);
             return View(jobDetail);
         }
 

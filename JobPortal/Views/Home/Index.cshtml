@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     var roleId = ViewContext.HttpContext.Session.GetInt32("IRoleId");
-    var userId = ViewContext.HttpContext.Session.GetInt32("UserId");
+    var userId = ViewContext.HttpContext.Session.GetInt32("IUserId");
 }
 @model List<TblJob>
 
@@ -20,9 +20,12 @@
     </div>
     <div class="upload-job-section">
         @if (roleId == 2)
-    {
+        {
             <a href="@Url.Action("AddJobs", "Employer")" class="btn upload-job-btn">Đăng tải Job</a>
             <a asp-controller="Employer" asp-action="JobsEmployer" asp-route-EmployerID="@ViewBag.iUserId" class="btn upload-job-btn">Xem Job đã đăng tải</a>
+        } else if (roleId == 3)
+        {
+            <a asp-controller="Job" asp-action="JobCandidate" asp-route-candidateID="@userId" class="btn upload-job-btn">Xem Job ứng tuyển</a>
         }
     </div>
 </div>
@@ -31,15 +34,29 @@
     
     @foreach (var job in Model)
     {
-        <div class="job-card">
+       <div class="job-card">
+            <!-- Hình ảnh công ty -->
+            <img class="job-image" src="@Url.Content("~/images/avt.jpg")" alt="Company Logo" />
+            
             <div class="job-info">
+                <!-- Tên công việc -->
                 <h2 class="job-title">@job.SJobName</h2>
-                <p class="company-name">@job.IEmployerId</p>
-                <p class="job-location"><i class="bi bi-geo-alt"></i> @job.FSalary</p>
-                <p class="job-description">@job.SDetail</p>
+                
+                <!-- Tên công ty -->
+                <p class="company-name">Company Name: @job.IEmployer.SName</p>
+                
+                <!-- Địa điểm công việc -->
+                <p class="job-description">
+                    <i class="bi bi-geo-alt"></i> @job.SDetail
+                </p>
+                
+                <!-- Mô tả công việc -->
+                <p class="job-location">@job.SAddress</p>
             </div>
+            
+            <!-- Nút xem chi tiết -->
             <div class="job-action">
-                <a asp-controller="Home" asp-action="JobDetail" asp-route-jobID="@job.IJobId">Xem Chi Tiết</a>
+                <a class="btn-details" asp-controller="Home" asp-action="JobDetail" asp-route-jobID="@job.IJobId">Xem Chi Tiết</a>
             </div>
         </div>
     }

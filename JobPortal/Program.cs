@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 builder.Services.AddScoped<IJobRepository, JobRepositoty>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IApplicantRepository, ApplicantRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("JobPortalDbContext");
 builder.Services.AddDbContext<JobPortalDbContext>(x => x.UseSqlServer(connectionString));

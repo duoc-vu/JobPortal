@@ -1,0 +1,83 @@
+﻿@model List<TblApplicant>
+
+@{
+    ViewData["Title"] = "JobCandidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>JobCandidate</h1>
+<table class="table">
+    <thead>
+        <tr>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.IJob.SAvt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IJob.SJobName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FExperience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SIndustry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IUser)
+            </th>
+            <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IJob.SAvt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IJob.SJobName)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IJob.SDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIntroduction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IJob.SAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IJob.DTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SCv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIntroduction)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.IUser.IUserId)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IUserId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IUserId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IUserId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="action-links">
+    <a asp-controller="Home" asp-action="Index">Quay lại danh sách</a>
+</div>

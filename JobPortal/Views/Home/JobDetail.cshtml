@@ -27,13 +27,13 @@
         <p>@Html.DisplayFor(model => model.SDetail)</p>
 
         <h4>Thông tin nhà tuyển dụng</h4>
-        <p>ID nhà tuyển dụng: @Html.DisplayFor(model => model.IEmployerId)</p>
-        @*<p>Địa chỉ: @Html.DisplayFor(model => model.SAddress)</p>*@
+        <p>Company Name: @Html.DisplayFor(model => model.IEmployer.SName)</p>
+        <p>Địa chỉ: @Html.DisplayFor(model => model.SAddress)</p>
     </div>
 
     <div class="action-links">
-        @if(roleId == 3) {
-            <a asp-controller="Home" asp-action="JobApply" asp-route-jobID="@Model.IJobId" >Ứng tuyển</a>
+        @if(roleId == 3 && ViewBag.isApply == true) {
+            <a asp-controller="Job" asp-action="JobApplicant" asp-route-jobID="@Model.IJobId">Ứng tuyển</a>
         }
         <a asp-controller="Home" asp-action="Index">Quay lại danh sách</a>
     </div>

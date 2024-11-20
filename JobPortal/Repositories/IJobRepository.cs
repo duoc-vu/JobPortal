@@ -7,6 +7,8 @@ namespace JobPortal.Repositories
         TblJob Update(TblJob job);
         TblJob Delete(TblJob job);
         TblJob GetJob(int jobID);
+
+        TblJob GetJobI(int jobID);
         List<TblJob> FindJobE(int EmployerID);
         List<TblJob> GetAllJob();
     }
